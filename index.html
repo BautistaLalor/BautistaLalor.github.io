@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>!!! WELCOME TO MY AWESOME WEBPAGE !!! V3.0</title>
+    <style>
+        body {
+            background-color: #00FFFF;
+            background-image: repeating-linear-gradient(45deg, yellow 25%, transparent 25%, transparent 75%, yellow 75%, yellow), repeating-linear-gradient(45deg, yellow 25%, transparent 25%, transparent 75%, yellow 75%, yellow);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #FF00FF;
+            font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            cursor: crosshair;
+            overflow-x: hidden;
+            transition: all 0.5s;
+        }
+
+        h1 {
+            font-size: 50px;
+            text-decoration: underline overline;
+            background-color: #0000FF;
+            color: #FF0000;
+            padding: 10px;
+            border: 10px dotted #00FF00;
+            text-shadow: 3px 3px 0px #FFFF00;
+        }
+
+        .blink {
+            animation: blinker 0.1s linear infinite;
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+            background: yellow;
+        }
+
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .marquee-container {
+            background: black; color: lime; font-family: "Courier New", Courier, monospace;
+            font-size: 24px; padding: 5px; overflow: hidden; white-space: nowrap; margin: 20px 0; border: 5px solid red;
+        }
+
+        .marquee-content { display: inline-block; animation: marquee 3s linear infinite; }
+        @keyframes marquee { 0% { transform: translate(100%, 0); } 100% { transform: translate(-100%, 0); } }
+
+        #runaway-btn {
+            position: relative; background-color: orange; color: purple; font-family: Impact, fantasy;
+            font-size: 20px; padding: 10px 30px; border: 8px outset pink; border-radius: 0; cursor: help;
+        }
+
+        fieldset {
+            border: 15px ridge #FF00FF; background: #000080; color: #00FF00; width: 50%;
+            margin: 40px auto; text-align: left;
+        }
+
+        legend {
+            background: yellow; color: red; font-size: 24px; font-weight: bold;
+            padding: 5px; border: 3px solid red;
+        }
+
+        input, textarea {
+            background-color: #FFFF00; color: #FF0000; border: 3px dashed blue;
+            font-family: "Comic Sans MS"; font-size: 16px; width: 90%;
+        }
+
+        #tacky-clock {
+            position: fixed; bottom: 10px; right: 10px; background: magenta; color: cyan;
+            font-size: 35px; font-family: "Courier New", monospace; border: 8px double white;
+            padding: 10px; z-index: 9999; box-shadow: 10px 10px 0px black;
+        }
+
+        .midi-player {
+            background: silver; border: 5px solid gray; padding: 10px; width: 300px;
+            margin: 20px auto; font-family: Arial, sans-serif; color: black; font-size: 12px;
+        }
+
+        .webring {
+            font-size: 14px; background: black; color: white; padding: 10px; border: 2px solid white; margin-top: 50px;
+        }
+
+        .webring a { cursor: pointer; text-decoration: underline; font-weight: bold; margin: 0 10px; }
+
+        #guestbook-entries div {
+            border: 4px inset cyan; background: black; margin: 10px 0; padding: 10px; font-family: "Times New Roman"; font-size: 20px;
+        }
+
+        #bsod {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #0000AA; color: #FFFFFF; font-family: "Courier New", monospace;
+            font-size: 24px; z-index: 100000; padding: 50px; text-align: left; box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bsod">
+        A fatal exception 0E has occurred at 0028:C0011E36 in UX_DESIGN.SYS.<br><br>
+        * Press any key to terminate the current application.<br>
+        * Press CTRL+ALT+DEL again to restart your computer. You will lose any unsaved formatting in all applications.<br><br>
+        Press ESC to continue_
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            🔥🔥🔥 WARNING: DO NOT CLICK THE FREE RAM BUTTON 🔥🔥🔥 WARNING: DO NOT CLICK THE FREE RAM BUTTON 🔥🔥🔥
+        </div>
+    </div>
+
+    <h1>Welcome 2 My Home Page!!1!</h1>
+
+    <span class="blink">WARNING: HEAVY GRAPHICS AHEAD 🚧</span>
+
+    <div class="midi-player">
+        <strong>Currently Playing:</strong> <em>TECHNO_REMIX_FINAL.wav</em><br>
+        <marquee id="audio-visualizer" direction="up" scrollamount="1" style="height: 30px; background: black; color: lime;">
+            ||||||||||||||||||||||||||||<br>
+            ||||||||||||||||||||||||||||<br>
+            ||||||||||||||||||||||||||||
+        </marquee>
+        <button onclick="playMusic()">[► Play]</button> 
+        <button onclick="stopMusic()">[■ Stop]</button>
+    </div>
+
+    <p style="font-size: 22px; line-height: 0.8; letter-spacing: -2px;">
+        Hello and welcome to my site. I am learning HTML and this is my first page. 
+        It is very cool. Please sign my guestbook before you leave. Do not steal my graphics 
+        because they are copyrighted to me.
+    </p>
+
+    <button id="runaway-btn" onmouseover="flee()" onclick="triggerBSOD()">CLICK HERE FOR FREE RAM</button>
+
+    <fieldset>
+        <legend>📝 SIGN MY GUESTBOOK 📝</legend>
+        Name/Alias:<br>
+        <input type="text" id="gb-name"><br><br>
+        Leave a cool message:<br>
+        <textarea rows="4" id="gb-msg"></textarea><br><br>
+        <button onclick="signGuestbook(event)" style="background: red; color: yellow; font-size: 20px; cursor: pointer;">SUBMIT TO WEBSERVER</button>
+        
+        <div id="guestbook-entries"></div>
+    </fieldset>
+
+    <div class="webring">
+        <strong>[ GeoCities Anime Webring ]</strong><br>
+        <a style="color: cyan;" onclick="webringPrev()"><< Prev (Top)</a> | 
+        <a style="color: yellow;" onclick="webringRandom()">Random (Chaos)</a> | 
+        <a style="color: lime;" onclick="webringNext()">Next (Bottom) >></a>
+    </div>
+
+    <div id="tacky-clock">00:00:00</div>
+
+    <script>
+        // 1. Hostile Greetings
+        window.onload = function() {
+            alert("WELCOME TO MY HOMEPAGE!!!");
+            alert("TURN ON YOUR SPEAKERS AND PRESS PLAY!!!");
+        };
+
+        // 2. The Runaway Button (Evasive Maneuvers)
+        function flee() {
+            const btn = document.getElementById('runaway-btn');
+            const randomX = Math.floor(Math.random() * 500) - 250;
+            const randomY = Math.floor(Math.random() * 500) - 250;
+            btn.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomX}deg)`;
+        }
+
+        // Fake Blue Screen of Death if they catch the button
+        function triggerBSOD() {
+            document.getElementById('bsod').style.display = 'block';
+            stopMusic(); // Stop music for dramatic effect
+            document.addEventListener('keydown', function(e) {
+                if(e.key === "Escape") { document.getElementById('bsod').style.display = 'none'; }
+            });
+        }
+
+        // 3. Seizure Clock
+        setInterval(function() {
+            const clock = document.getElementById('tacky-clock');
+            clock.innerText = new Date().toLocaleTimeString();
+            const colors = ['red', 'blue', 'lime', 'magenta', 'yellow', 'cyan'];
+            clock.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            clock.style.color = colors[Math.floor(Math.random() * colors.length)];
+        }, 100);
+
+        // 4. Custom Cursor Trail
+        const trailText = "AWESOME!!!";
+        for (let i = 0; i < trailText.length; i++) {
+            let span = document.createElement("span");
+            span.innerText = trailText[i];
+            span.style.position = "absolute";
+            span.style.color = "black";
+            span.style.fontWeight = "bold";
+            span.style.fontSize = "24px";
+            span.style.pointerEvents = "none";
+            span.className = "trail";
+            document.body.appendChild(span);
+        }
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener("mousemove", function(e) { mouseX = e.pageX; mouseY = e.pageY; });
+
+        const trailElements = document.getElementsByClassName("trail");
+        setInterval(function() {
+            let x = mouseX, y = mouseY;
+            for (let i = 0; i < trailElements.length; i++) {
+                let el = trailElements[i];
+                let nextX = parseInt(el.style.left || x);
+                let nextY = parseInt(el.style.top || y);
+                el.style.left = x + 15 + "px"; el.style.top = y + 15 + "px";
+                x = nextX; y = nextY;
+            }
+        }, 30);
+
+        // 5. Functional Terrible Audio (Web Audio API)
+        let audioCtx;
+        let oscillator;
+        let audioInterval;
+
+        function playMusic() {
+            if (oscillator) return; // Prevent multiple clicks
+            document.getElementById('audio-visualizer').setAttribute('scrollamount', '20');
+            
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            oscillator = audioCtx.createOscillator();
+            oscillator.type = 'square'; // Harsh, retro sound
+            oscillator.connect(audioCtx.destination);
+            oscillator.start();
+
+            // Create an awful oscillating siren effect
+            audioInterval = setInterval(() => {
+                const freq = Math.random() > 0.5 ? 440 : 880; 
+                oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            }, 150);
+        }
+
+        function stopMusic() {
+            if (oscillator) {
+                oscillator.stop();
+                oscillator.disconnect();
+                oscillator = null;
+                clearInterval(audioInterval);
+                document.getElementById('audio-visualizer').setAttribute('scrollamount', '1');
+            }
+        }
+
+        // 6. Functional Guestbook
+        function signGuestbook(e) {
+            e.preventDefault();
+            const name = document.getElementById('gb-name').value || "Anonymous Coward";
+            const msg = document.getElementById('gb-msg').value || "I couldn't figure out how to type.";
+            const container = document.getElementById('guestbook-entries');
+            
+            const entry = document.createElement('div');
+            const randomColor = ['lime', 'pink', 'yellow', 'cyan'][Math.floor(Math.random() * 4)];
+            entry.style.color = randomColor;
+            entry.innerHTML = `<strong>${name} says:</strong> <marquee scrollamount="5">${msg}</marquee>`;
+            
+            container.appendChild(entry);
+            
+            // Clear inputs
+            document.getElementById('gb-name').value = '';
+            document.getElementById('gb-msg').value = '';
+            alert("ENTRY LOGGED. THANK YOU FOR YOUR DATA.");
+        }
+
+        // 7. Functional Webring
+        function webringPrev() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => alert("YOU HAVE RETURNED TO THE TOP"), 500);
+        }
+
+        function webringNext() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function webringRandom() {
+            // Chaos mode: rotate the whole page and change background
+            document.body.style.backgroundImage = 'none';
+            const randomHex = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor = randomHex;
+            const randomRot = Math.floor(Math.random() * 360);
+            document.body.style.transform = `rotate(${randomRot}deg) scale(0.8)`;
+            alert("W E L C O M E  T O  T H E  V O I D");
+        }
+    </script>
+</body>
+</html>
